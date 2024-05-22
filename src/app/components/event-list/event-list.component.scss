@@ -15,7 +15,7 @@
           color: white;
         }
 
-        .disabled-button {
+        .book-button[disabled] {
           background-color: #9E9E9E !important; // Grey background for disabled state
           color: #BDBDBD !important; // Light grey text color for disabled state
           pointer-events: none; // Ensure the button is not interactive
