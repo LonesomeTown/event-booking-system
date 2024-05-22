@@ -1,0 +1,29 @@
+<div class="content-area">
+  <div class="form-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Event Name</mat-label>
+      <input matInput [(ngModel)]="newEvent.name">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput [(ngModel)]="newEvent.description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Date</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="newEvent.date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Location</mat-label>
+      <textarea matInput [(ngModel)]="newEvent.location"></textarea>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="addEvent()" class="add-event">Add Event</button>
+  </div>
+
+  <app-event-list></app-event-list>
+</div>

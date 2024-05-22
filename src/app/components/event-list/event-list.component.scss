@@ -1,0 +1,30 @@
+::ng-deep {
+  .content-area {
+    display: flex;
+    flex-direction: column;
+    margin-top: 74px;
+
+    mat-form-field {
+      width: 20%;
+    }
+
+    mat-table {
+      mat-header-cell,
+      mat-cell {
+        .book-button {
+          background-color: #6200EE;
+          color: white;
+        }
+
+        button.mat-button[disabled] {
+          background-color: #9E9E9E !important; // Grey background for disabled state
+          color: #BDBDBD !important; // Light grey text color for disabled state
+        }
+      }
+
+      mat-cell:empty:before {
+        content: '-';
+      }
+    }
+  }
+}

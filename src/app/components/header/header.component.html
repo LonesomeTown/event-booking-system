@@ -1,0 +1,9 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Booking System</span>
+    <span class="spacer"></span>
+    <button mat-raised-button color="primary" *ngIf="(currentUserRole$ | async) === 'ADMIN'" routerLink="/admin-dashboard">Admin Dashboard</button>
+    <button mat-raised-button color="primary" *ngIf="!(isLoggedIn$ | async) && shouldShowLoginButton()" (click)="login()">Login</button>
+    <button mat-raised-button color="primary" *ngIf="(isLoggedIn$ | async)" (click)="logout()">Logout</button>
+  </mat-toolbar-row>
+</mat-toolbar>

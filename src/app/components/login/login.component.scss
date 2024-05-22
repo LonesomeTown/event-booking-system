@@ -1,0 +1,61 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+
+  mat-card {
+    width: 100%;
+    max-width: 400px; // Limiting the width for better aesthetics
+    margin: 30px auto; // Adds vertical spacing
+    background-color: white; // Card background
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); // Subtle shadow for depth
+
+    mat-card-title {
+      text-align: center;
+      margin-bottom: 20px; // Extra space below the title
+    }
+
+    mat-form-field {
+      width: 100%; // Full width form fields
+
+      .mat-form-field-wrapper {
+        background-color: #f5f5f5; // Light grey for input field background
+      }
+
+      .mat-form-field-underline .mat-form-field-ripple {
+        background-color: transparent; // Remove underline color
+      }
+
+      .mat-form-field-label {
+        color: rgba(0, 0, 0, 0.6); // Grey color for labels
+      }
+
+      input {
+        color: rgba(0, 0, 0, 0.87); // Ensures input text is visibly darker
+      }
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center; // Ensures the button is centered
+      width: 100%; // Takes full width to center the button properly
+      margin-top: 20px;
+      justify-content: space-between;
+    }
+
+    button.mat-raised-button {
+      width: auto; // Auto width for the button
+      background-color: #6200EE; // Primary color for the button
+      color: white;
+    }
+  }
+}
+
+// Media query for responsiveness
+@media (max-width: 768px) {
+  .container mat-card {
+    margin: 10px; // Less margin for smaller screens
+  }
+}

@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+/* Reset margins and paddings to remove unwanted spaces */
+html, body, mat-toolbar {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding-top: 60px;
+}
+
+.content-area {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Ensure the toolbar extends full width */
+mat-toolbar {
+  width: 100%;
+}

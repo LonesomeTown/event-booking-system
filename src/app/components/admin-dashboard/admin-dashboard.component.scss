@@ -1,0 +1,23 @@
+.form-container {
+  display: flex;
+  flex-wrap: wrap; /* Allows fields to wrap onto the next line if needed */
+  gap: 16px; /* Adds space between each field */
+  justify-content: space-between; /* Distributes space between and around content items */
+  align-items: end; /* Aligns items to the bottom, making all fields align at the bottom */
+  margin-bottom: 20px; /* Adds some space below the form before the table starts */
+}
+
+mat-form-field {
+  flex: 1 1 200px; /* Allows each field to grow and gives a minimum width */
+}
+
+button.add-event {
+  white-space: nowrap; /* Ensures text does not wrap */
+  padding: 6px 12px; /* Smaller padding */
+  font-size: 0.875rem; /* Smaller font size */
+  margin-top: auto; /* Pushes the button to align with the form fields */
+}
+
+app-event-list {
+  width: 100%; /* Ensures the event list table spans the full width */
+}
