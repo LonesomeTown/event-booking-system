@@ -1,11 +1,4 @@
 <div class="content-area">
-  <!-- <div class="search-box">
-    <mat-form-field appearance="fill">
-      <mat-label>Search events</mat-label>
-      <input matInput [(ngModel)]="searchTerm" (keyup)="applyFilter()">
-    </mat-form-field>
-  </div> -->
-
   <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Event Name </mat-header-cell>

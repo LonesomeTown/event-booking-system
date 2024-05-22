@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterModule, Router } from '@angular/router';
 
 @Component({
@@ -12,6 +14,8 @@ import { RouterModule, Router } from '@angular/router';
     CommonModule,
     MatToolbarModule,
     MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
     RouterModule
   ],
   templateUrl: './header.component.html',
@@ -25,6 +29,10 @@ export class HeaderComponent {
 
   shouldShowLoginButton(): boolean {
     return this.router.url !== '/login';
+  }
+
+  shouldShowAdminButton(): boolean {
+    return this.router.url !== '/admin-dashboard';
   }
 
   login(): void {

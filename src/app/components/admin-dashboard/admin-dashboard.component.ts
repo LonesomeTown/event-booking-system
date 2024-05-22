@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { EventService } from '../../services/event.service';
 import { Event } from '../../types/event.type';
 import { EventListComponent } from '../event-list/event-list.component';
@@ -27,6 +27,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './admin-dashboard.component.scss'
 })
 export class AdminDashboardComponent {
+  @ViewChild(EventListComponent) eventList!: EventListComponent;
   newEvent = { name: '', description: '', date: new Date(), location: '' } as Omit<Event, 'id' | 'isBooked'>;
 
   constructor(private eventService: EventService) {}
@@ -35,7 +36,8 @@ export class AdminDashboardComponent {
     this.eventService.createEvent(this.newEvent).subscribe({
       next: (event) => {
         console.log('Event added', event);
-        this.newEvent = { name: '', description: '', date: new Date(), location: '' }; // Reset the form
+        this.eventList.loadEvents();
+        this.newEvent = { name: '', description: '', date: new Date(), location: '' };
       },
       error: (error) => console.error('Error adding event', error)
     });

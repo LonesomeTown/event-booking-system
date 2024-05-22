@@ -2,7 +2,6 @@
   .content-area {
     display: flex;
     flex-direction: column;
-    margin-top: 74px;
 
     mat-form-field {
       width: 20%;
@@ -16,9 +15,15 @@
           color: white;
         }
 
-        button.mat-button[disabled] {
+        .disabled-button {
           background-color: #9E9E9E !important; // Grey background for disabled state
           color: #BDBDBD !important; // Light grey text color for disabled state
+          pointer-events: none; // Ensure the button is not interactive
+        }
+
+        button.mat-button.cdk-focused, button.mat-button.cdk-program-focused {
+          background-color: #6200EE; // Ensure focused state has correct color
+          color: white;
         }
       }
 

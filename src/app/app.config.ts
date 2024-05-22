@@ -2,16 +2,15 @@ import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { authInterceptor } from './utils/auth.interceptor';
+import { AuthInterceptor } from './utils/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes)
-    , provideHttpClient(withInterceptors(
-        [authInterceptor]
-      ))
+    , provideHttpClient(withInterceptorsFromDi())
+    ,{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
     , provideAnimationsAsync()
   ]
 };

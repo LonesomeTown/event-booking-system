@@ -1,9 +1,22 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span>Booking System</span>
-    <span class="spacer"></span>
-    <button mat-raised-button color="primary" *ngIf="(currentUserRole$ | async) === 'ADMIN'" routerLink="/admin-dashboard">Admin Dashboard</button>
-    <button mat-raised-button color="primary" *ngIf="!(isLoggedIn$ | async) && shouldShowLoginButton()" (click)="login()">Login</button>
-    <button mat-raised-button color="primary" *ngIf="(isLoggedIn$ | async)" (click)="logout()">Logout</button>
-  </mat-toolbar-row>
-</mat-toolbar>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav class="sidenav" mode="over">
+    <button mat-button color="primary" *ngIf="(currentUserRole$ | async) === 'ADMIN' && shouldShowAdminButton()" routerLink="/admin-dashboard">Admin Dashboard</button>
+    <button mat-button color="primary" *ngIf="!(isLoggedIn$ | async) && shouldShowLoginButton()" (click)="login()">Login</button>
+    <button mat-button color="primary" *ngIf="(isLoggedIn$ | async)" (click)="logout()">Logout</button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <span>Booking System</span>
+        <span class="spacer"></span>
+        <button mat-icon-button (click)="sidenav.toggle()" class="menu-button">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <button mat-raised-button color="primary" class="toolbar-button" *ngIf="(currentUserRole$ | async) === 'ADMIN'" routerLink="/admin-dashboard">Admin Dashboard</button>
+        <button mat-raised-button color="primary" class="toolbar-button" *ngIf="!(isLoggedIn$ | async) && shouldShowLoginButton()" (click)="login()">Login</button>
+        <button mat-raised-button color="primary" class="toolbar-button" *ngIf="(isLoggedIn$ | async)" (click)="logout()">Logout</button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

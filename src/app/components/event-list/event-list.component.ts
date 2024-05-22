@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatTableModule } from '@angular/material/table';
@@ -26,12 +26,13 @@ import { Event } from '../../types/event.type';
   styleUrls: ['./event-list.component.scss']
 })
 export class EventListComponent implements OnInit {
+
   displayedColumns: string[] = ['name', 'date', 'description', 'location', 'actions'];
   dataSource = new MatTableDataSource<Event>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   searchTerm: string = '';
 
-  constructor(private eventService: EventService, private cdr: ChangeDetectorRef) { }
+  constructor(private eventService: EventService) { }
 
   ngOnInit(): void {
     this.loadEvents();
@@ -59,7 +60,7 @@ export class EventListComponent implements OnInit {
         .subscribe({
           next: (response) => {
             console.log('Booking successful', response);
-            this.cdr.detectChanges();
+            this.loadEvents();
           },
           error: (error) => console.error('Booking failed', error)
         });

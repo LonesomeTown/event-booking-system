@@ -1,26 +1,52 @@
 :host {
   display: block;
-  width: 100%; // Ensures the header spans the full width of the viewport
+  width: 100%;
 
   mat-toolbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000; // High z-index to ensure it is on top of other elements
+    z-index: 1000;
     display: flex;
     justify-content: space-between;
     background-color: #FFFFFF;
-    color: #333; // Dark grey color for better readability
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // Optional shadow for depth
-    padding: 0 16px; // Adds padding on both sides of the toolbar
-  }
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 0 16px;
 
-  .mdc-button ~ .mdc-button {
-    margin-left: 10px;
+    .menu-button {
+      display: none;
+    }
+
+    .toolbar-button {
+      display: none;
+    }
   }
 
   .spacer {
-    flex: 1 1 auto; // Takes up all available space
+    flex: 1 1 auto;
   }
+
+  @media (min-width: 600px) {
+    mat-toolbar .menu-button {
+      display: none;
+    }
+
+    mat-toolbar .toolbar-button {
+      display: inline-flex;
+      margin-left: 10px;
+    }
+  }
+
+  @media (max-width: 599px) {
+    mat-toolbar .menu-button {
+      display: inline-flex;
+    }
+
+    mat-toolbar .toolbar-button {
+      display: none;
+    }
+  }
+
 }

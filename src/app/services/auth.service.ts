@@ -30,6 +30,16 @@ interface AuthTokens {
   refreshToken: string;
 }
 
+interface TokenResponse {
+  token: string;
+  expires: Date;
+}
+
+interface AuthTokensResponse {
+  access: TokenResponse;
+  refresh?: TokenResponse;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -61,6 +71,17 @@ export class AuthService {
         this.storeTokens(response.tokens);
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('userRole', response.user.role);
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  refreshToken(): Observable<AuthTokensResponse> {
+    return this.http.post<AuthTokensResponse>(`${this.apiUrl}/v1/auth/refresh-tokens`, {
+      'refreshToken': localStorage.getItem('refreshToken')
+    }).pipe(
+      tap(response => {
+        localStorage.setItem('accessToken', response.access.token);
       }),
       catchError(this.handleError)
     );
