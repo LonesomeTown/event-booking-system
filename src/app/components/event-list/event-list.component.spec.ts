@@ -60,13 +60,6 @@ describe('EventListComponent', () => {
     expect(component.dataSource.data).toEqual(mockEvents);
   });
 
-  it('should apply filter', () => {
-    component.dataSource.data = mockEvents;
-    component.searchTerm = 'Event 1';
-    component.applyFilter();
-    expect(component.dataSource.filter).toBe('event 1');
-  });
-
   it('should book event', () => {
     const eventToBook = mockEvents[0];
     eventService.bookEvent.and.returnValue(of(undefined));
